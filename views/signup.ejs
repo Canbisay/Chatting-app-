@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>signup</title>
+    <link href="/style.css" rel="stylesheet">
+</head>
+<body>
+    <div>
+        <form action="/auth/register" method = "post">
+            <section><p>Signup to <span style="color: rgb(181, 98, 63);">Tal</span><span style="color: cornflowerblue;">kiee</span></p></section>
+            <input type="text" placeholder="username" name="name">
+            <input type = "password" placeholder="password" name="password">
+            <input type = "text" placeholder="phone no" name="phone">
+            <button> signup </button>
+       </form> 
+       <button onclick="window.location.href='/auth/login'">Already a user?</button>
+    </div>
+    <% if (typeof alertMessage !== "undefined") { %>
+    <p ><%= alertMessage %></p>
+    <% } %>
+</body>
+</html>

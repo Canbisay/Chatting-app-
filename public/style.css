@@ -1,0 +1,84 @@
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(250, 235, 215, 0.751);
+  font-family: sans-serif;
+  flex-direction: column;
+}
+
+/* Outer wrapper div */
+div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Main form card */
+form {
+  border-radius: 8px;
+  border: 1px solid rgba(0, 0, 0, 0.652);
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 260px;
+  padding: 24px;
+  box-sizing: border-box;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Heading section inside form */
+form section p {
+  align-self: flex-start;
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* Inputs styling */
+form input {
+  width: 100%;
+  height: 36px;
+  border-radius: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  background-color: rgba(222, 184, 135, 0.2);
+  padding: 0 10px;
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: none;
+}
+
+form input:focus {
+  border-color: cornflowerblue;
+}
+
+/* Submit signup button */
+form button {
+  width: 100%;
+  height: 36px;
+  background-color: cornflowerblue;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+form button:hover {
+  background-color: #4682b4;
+}
+
+/* Secondary "Already a user?" button outside form */
+div > button {
+  background: none;
+  border: none;
+  color: rgb(181, 98, 63);
+  font-size: 13px;
+  cursor: pointer;
+  text-decoration: underline;
+}
