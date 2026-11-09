@@ -4,6 +4,9 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import authrouter from "./routes/auth.js";
+import verifyToken from "./middlewares/auth.js";
+import cookieParser from "cookie-parser";
+
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -15,6 +18,7 @@ server.set('views', path.join(__dirname, 'views'));
 server.use(express.json()); 
 server.use(express.urlencoded({ extended: true }));
 server.use(express.static('public'));
+server.use(cookieParser());
 
 const start = async () => {
   try {
@@ -28,5 +32,9 @@ const start = async () => {
   }
 };
 start();
+
+server.get("/" ,verifyToken ,(req ,res) => {
+    res.render("User");
+});
 
 server.use("/auth" , authrouter);

@@ -3,11 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login-talkie</title>
+    <title>signup</title>
+    <link href="/style.css" rel="stylesheet">
 </head>
 <body>
     <div>
-        <p>you are at login page</p>
+        <form action="/auth/login" method = "post">
+            <section><p>Login to <span style="color: rgb(181, 98, 63);">Tal</span><span style="color: cornflowerblue;">kiee</span></p></section>
+            <input type="text" placeholder="username" name="name">
+            <input type = "password" placeholder="password" name="password">
+            <input type = "text" placeholder="phone no" name="phone">
+            <button> login </button>
+       </form> 
     </div>
+    <% if (typeof alertMessage !== "undefined") { %>
+    <p ><%= alertMessage %></p>
+    <% } %>
 </body>
 </html>

@@ -1,7 +1,9 @@
 import express from "express";
-const authrouter = express.Router();
 import bcrypt from "bcrypt";
 import User from "../models/user.js";
+import jwt from "jsonwebtoken";
+
+const authrouter = express.Router();
 
 // signup
 authrouter.get("/register", (req, res) => {
@@ -26,11 +28,17 @@ authrouter.post("/register", async (req, res) => {
 
 // login
 authrouter.get("/login", (req, res) => {
-    res.send("login page");
+    res.render("login");
 });
 
-authrouter.post("/login", (req, res) => {
-    res.send("login form submitted");
+authrouter.post("/login", async(req, res) => {
+const {name , password } = req.body;
+const user = await User.findOne({ name }).select("+password");
+const ok = user && await bcrypt.compare(password, user.password);
+if (!ok) return res.status(401).render("login", { alertMessage: "Invalid name or password" });
+const token = jwt.sign({ id: User._id }, process.env.JWT_SECRET, { expiresIn: process.env.JWT_EXPIRES_IN });
+res.cookie("token", token, { httpOnly: true });
+res.send("on chating page");
 });
 
 export default authrouter;
